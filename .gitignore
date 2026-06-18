@@ -8,8 +8,12 @@ env/
 .ipynb_checkpoints/
 .pytest_cache/
 
-# Data & training artifacts (large / derived — regenerate, don't commit)
-data/
+# Training artifacts (regenerate, don't commit)
+# data/: ignore everything except the ready-to-use datasets committed for convenience
+data/*
+!data/sample
+!data/neu
+!data/neu_det
 runs/
 outputs/
 *.pt

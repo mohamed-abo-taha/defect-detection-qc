@@ -80,6 +80,18 @@ the same amount and does nothing for imbalance; the per-class weight vector is t
 matters. `src/qc/losses.py` supports both, and `tests/test_losses.py` has a test that pins this
 down. This is the classification loss. YOLO uses its own loss, so it doesn't apply to the detector.
 
+## Data
+
+The datasets are committed under `data/`, so you can train and evaluate without downloading anything.
+
+- `data/sample`: synthetic defects used by the quickstart and tests. Regenerate with `scripts/make_sample.py`.
+- `data/neu`: NEU-CLS, six steel-surface defect classes, split into train/val/test.
+- `data/neu_det`: NEU-DET in YOLO format, images and labels for the detector.
+
+The NEU datasets come from Northeastern University and are widely used for surface-defect research. The
+raw downloads and the induced-imbalance split are rebuilt by `scripts/prepare_neu.py` and
+`scripts/prepare_neu_det.py` if you need them.
+
 ## Running it
 
 ```bash
