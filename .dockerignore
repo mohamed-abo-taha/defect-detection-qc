@@ -1,0 +1,12 @@
+# keep the image small: data, training artifacts, caches, git — but DO ship models/ + samples/
+data/
+outputs/
+runs/
+.git/
+.github/
+__pycache__/
+**/__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/

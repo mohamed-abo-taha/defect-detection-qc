@@ -1,0 +1,16 @@
+# Example Ultralytics YOLO data config for the DETECTION track (bounding boxes).
+# Point `path` at a YOLO-format dataset (a Roboflow export, or NEU-DET / GC10-DET
+# converted to YOLO format), then:
+#   python scripts/yolo_train.py --data configs/defect_detection.example.yaml --epochs 100
+#
+# YOLO label format: one .txt per image, each line "class cx cy w h" (normalised 0-1).
+path: ../data/defects   # dataset root (relative to this file, or use an absolute path)
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: scratch
+  1: dent
+  2: contamination
+  3: crack
+  4: pit
