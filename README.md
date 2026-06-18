@@ -18,6 +18,26 @@ calibration, and a fast exported model.
 | Detection (YOLOv8) | bounding boxes | you have box annotations | `scripts/yolo_train.py` |
 | Anomaly (PaDiM) | normal vs anomalous + heatmap | defects are rare or unlabelled | `src/qc/anomaly.py` |
 
+## Examples
+
+Detection, input and predicted boxes:
+
+![detection](assets/detection.png)
+
+Grad-CAM on the classifier, input and the regions it focused on:
+
+![grad-cam](assets/gradcam.png)
+
+PaDiM anomaly map, trained on good parts only:
+
+![anomaly](assets/anomaly.png)
+
+Confusion matrix, and a calibration reliability diagram before and after temperature scaling:
+
+![confusion matrix](assets/confusion_matrix.png)
+
+![calibration](assets/calibration.png)
+
 ## Results
 
 ### Classification on NEU-CLS
