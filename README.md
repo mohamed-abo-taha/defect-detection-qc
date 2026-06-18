@@ -122,13 +122,6 @@ subtracts escape cost, so it comes out negative when recall is low or escapes ar
 the default assumptions it lands around $247k/year; raise the cost per escaped defect and it flips.
 The numbers are yours to set.
 
-## Deploying
-
-A trained classifier and six sample images are committed, so a fresh clone runs without downloading
-anything. For Streamlit Community Cloud use `requirements-deploy.txt`, which pulls CPU torch wheels
-and skips ultralytics; the detection mode loads lazily so it just won't appear there. There's a
-Dockerfile for the classification demo. I haven't built the image on this machine.
-
 ## Tests
 
 `pip install -e ".[dev]"` then `pytest -q`. 17 tests cover the loss, class weighting, the VOC to
