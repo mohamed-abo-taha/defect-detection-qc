@@ -26,6 +26,7 @@ wandb/
 # (so a fresh clone / cloud deploy has a working model and images to try)
 !models/
 !models/*.pt
+!models/*.onnx
 !samples/
 !samples/*.jpg
 !samples/*.png

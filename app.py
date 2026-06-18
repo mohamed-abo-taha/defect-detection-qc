@@ -50,10 +50,10 @@ def load_classifier(ckpt):
 
 
 @st.cache_resource
-def load_detector(weights):
-    from ultralytics import YOLO  # lazy: classification-only deploys don't need ultralytics
+def load_yolo_onnx(path):
+    from qc.yolo_onnx import YoloOnnx  # onnxruntime only, no ultralytics/cv2 at inference
 
-    return YOLO(weights)
+    return YoloOnnx(path)
 
 
 def run_classify(ckpt):
@@ -96,31 +96,21 @@ def run_detect(weights):
         st.write("Upload an image to detect defects.")
         return
     if not pathlib.Path(weights).exists():
-        st.warning(f"No weights at `{weights}`. Train the detector (`scripts/yolo_train.py`) or set the path.")
+        st.warning(f"No model at `{weights}`. Export one with `scripts/yolo_infer.py --onnx` or set the path.")
         return
-    try:
-        model = load_detector(weights)
-    except Exception:
-        st.error(
-            "Detection couldn't load here. It needs OpenCV and ultralytics, which don't always import "
-            "on a hosted free-tier image. Use Classify mode, or run detection locally with "
-            "`scripts/yolo_infer.py`."
-        )
-        return
+    detector = load_yolo_onnx(weights)
     pil = Image.open(io.BytesIO(up.read())).convert("RGB")
-    res = model.predict(pil, conf=max(0.05, gate * 0.4), device="cpu", verbose=False)[0]
-    annotated = res.plot()[:, :, ::-1]  # ultralytics returns BGR; flip to RGB
+    annotated, dets = detector(pil, conf=max(0.1, gate * 0.4))
     c1, c2 = st.columns(2)
     c1.image(pil, caption="input", use_container_width=True)
     c2.image(annotated, caption="detections", use_container_width=True)
-    dets = [(res.names[int(b.cls)], round(float(b.conf), 2)) for b in res.boxes]
     st.write(f"**{len(dets)} detection(s):** {dets}" if dets else "No defects above the threshold.")
 
 
 if mode.startswith("Classify"):
     run_classify(st.sidebar.text_input("Classifier checkpoint", "models/clf_neu.pt"))
 else:
-    run_detect(st.sidebar.text_input("YOLO weights", "models/yolo_neu.pt"))
+    run_detect(st.sidebar.text_input("YOLO ONNX model", "models/yolo_neu.onnx"))
 
 with st.sidebar.expander("💰 ROI model (illustrative)"):
     st.caption("A transparent what-if, not a guarantee — your assumptions in, a range out.")
