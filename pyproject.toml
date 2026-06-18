@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "cv-quality-control"
 version = "0.1.0"
-description = "Honest computer-vision pipeline for manufacturing defect QC"
+description = "Computer-vision pipeline for manufacturing defect QC"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

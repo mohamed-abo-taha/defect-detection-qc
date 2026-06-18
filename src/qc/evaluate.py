@@ -1,4 +1,4 @@
-"""Honest evaluation: per-class precision/recall/F1, confusion matrix, and the
+"""Evaluation: per-class precision/recall/F1, confusion matrix, and the
 QC-specific framing that a single accuracy number hides.
 
 In quality control a *missed defect* (false negative) and a *false alarm* (false

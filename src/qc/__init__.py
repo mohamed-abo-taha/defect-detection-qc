@@ -1,4 +1,4 @@
-"""cv-quality-control — honest computer-vision pipeline for manufacturing defect QC.
+"""cv-quality-control: computer-vision pipeline for manufacturing defect QC.
 
 Pipeline stages (see README): data audit -> baseline -> imbalance handling ->
 evaluation -> explainability (Grad-CAM) -> ONNX export. Every reported number

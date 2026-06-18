@@ -4,7 +4,7 @@ CPU latency (PyTorch vs ONNXRuntime).
 ONNX is the portable, dependency-light path to "edge" deployment that runs anywhere
 ONNXRuntime does. TensorRT (the article's other suggestion) gives the best latency on
 NVIDIA hardware but needs the TensorRT package + a GPU; for the YOLO detection track
-you can also do ``yolo export format=engine``. We report measured latency honestly
+you can also do ``yolo export format=engine``. We report measured latency
 rather than claiming a speedup.
 """
 

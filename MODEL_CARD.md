@@ -1,6 +1,6 @@
 # Model card — cv-quality-control
 
-Honest summary of the models in this repo, what they're for, and where they fail.
+Summary of the models in this repo, what they're for, and where they fail.
 
 ## Intended use
 - **Assistive** visual inspection for manufacturing QC: flag likely defects and show *where* the
@@ -33,6 +33,6 @@ patches 0.93 · scratches 0.91 · pitted_surface 0.89 · inclusion 0.87 · rolle
 - Calibration: see `qc/calibrate.py` (ECE + temperature scaling) — confidence should be calibrated
   before it's used to make the route-to-human decision.
 
-## Ethical / honest-use notes
+## Notes on use
 No "100% accurate", "zero-defect", or "fully autonomous" claims. The ROI model (`qc/roi.py`) is an
 assumptions-in / range-out estimate, not a guarantee.
