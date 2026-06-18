@@ -32,9 +32,7 @@ PaDiM anomaly map, trained on good parts only:
 
 ![anomaly](assets/anomaly.png)
 
-Confusion matrix, and a calibration reliability diagram before and after temperature scaling:
-
-![confusion matrix](assets/confusion_matrix.png)
+A calibration reliability diagram, before and after temperature scaling:
 
 ![calibration](assets/calibration.png)
 
