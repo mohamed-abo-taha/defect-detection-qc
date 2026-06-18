@@ -16,7 +16,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
-          pip install timm scikit-learn pillow numpy pytest
+          pip install timm scikit-learn pillow numpy pandas matplotlib seaborn pytest
           pip install -e . --no-deps
       - name: Run fast unit tests (no downloads, no GPU)
         run: pytest -q tests/test_losses.py tests/test_utils.py tests/test_metrics.py tests/test_convert.py
