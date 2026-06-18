@@ -98,7 +98,15 @@ def run_detect(weights):
     if not pathlib.Path(weights).exists():
         st.warning(f"No weights at `{weights}`. Train the detector (`scripts/yolo_train.py`) or set the path.")
         return
-    model = load_detector(weights)
+    try:
+        model = load_detector(weights)
+    except Exception:
+        st.error(
+            "Detection couldn't load here. It needs OpenCV and ultralytics, which don't always import "
+            "on a hosted free-tier image. Use Classify mode, or run detection locally with "
+            "`scripts/yolo_infer.py`."
+        )
+        return
     pil = Image.open(io.BytesIO(up.read())).convert("RGB")
     res = model.predict(pil, conf=max(0.05, gate * 0.4), device="cpu", verbose=False)[0]
     annotated = res.plot()[:, :, ::-1]  # ultralytics returns BGR; flip to RGB
