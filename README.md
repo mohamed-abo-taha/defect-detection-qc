@@ -1,4 +1,6 @@
-# cv-quality-control
+# defect-detection-qc
+
+[![CI](https://github.com/mohamed-abo-taha/defect-detection-qc/actions/workflows/ci.yml/badge.svg)](https://github.com/mohamed-abo-taha/defect-detection-qc/actions/workflows/ci.yml)
 
 A computer-vision pipeline for **manufacturing defect detection**, built end-to-end and
 with an emphasis on the parts that actually decide whether such a system is useful:
